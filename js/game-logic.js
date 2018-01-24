@@ -1,6 +1,6 @@
 
 //initiliazing global variables for players
-/*
+
 let playerOneMoveOneType = undefined;
 let playerOneMoveOneValue = undefined;
 let playerTwoMoveOneType = undefined;
@@ -13,7 +13,8 @@ let playerOneMoveThreeType = undefined;
 let playerOneMoveThreeValue = undefined;
 let playerTwoMoveThreeType = undefined;
 let playerTwoMoveThreeValue = undefined;
-*/
+
+/*
 //test values
 playerOneMoveOneType = 'rock';
 playerOneMoveOneValue = 1;
@@ -28,7 +29,7 @@ playerOneMoveThreeValue = 50;
 playerTwoMoveThreeType = 'rock';
 playerTwoMoveThreeValue = 50;
 
-/*
+
 //Test values
 let playerOneMoveOneType = 'rock';
 let playerOneMoveOneValue = 33;
@@ -50,21 +51,47 @@ console.log(playerOneMoveOneValue);
 */
 
 const setPlayerMoves = (player, moveOneType, moveOneValue, moveTwoType, moveTwoValue, moveThreeType, moveThreeValue) => {
-  if (player === 'Player One') {
-    playerOneMoveOneType = moveOneType;
-    playerOneMoveOneValue = moveOneValue;
-    playerOneMoveTwoType = moveTwoType;
-    playerOneMoveTwoValue = moveTwoValue
-    playerOneMoveThreeType = moveThreeType;
-    playerOneMoveThreeValue = moveThreeValue;
-  } else {
-    playerTwoMoveOneType = moveOneType;
-    playerTwoMoveOneValue = moveOneValue;
-    playerTwoMoveTwoType = moveTwoType;
-    playerTwoMoveTwoValue = moveTwoValue
-    playerTwoMoveThreeType = moveThreeType;
-    playerTwoMoveThreeValue = moveThreeValue;
+
+  switch (moveOneType) {
+    case 'rock':
+    case 'paper':
+    case 'scissors':
+      switch (moveTwoType) {
+        case 'rock':
+        case 'paper':
+        case 'scissors':
+          switch (moveThreeType) {
+            case 'rock':
+            case 'paper':
+            case 'scissors':
+              if (player === 'Player One') {
+                playerOneMoveOneType = moveOneType;
+                playerOneMoveOneValue = moveOneValue;
+                playerOneMoveTwoType = moveTwoType;
+                playerOneMoveTwoValue = moveTwoValue
+                playerOneMoveThreeType = moveThreeType;
+                playerOneMoveThreeValue = moveThreeValue;
+              } else {
+                playerTwoMoveOneType = moveOneType;
+                playerTwoMoveOneValue = moveOneValue;
+                playerTwoMoveTwoType = moveTwoType;
+                playerTwoMoveTwoValue = moveTwoValue
+                playerTwoMoveThreeType = moveThreeType;
+                playerTwoMoveThreeValue = moveThreeValue;
+              }
+            break;
+
+    default:
+      break;
+
   }
+}
+}
+
+
+
+
+
 //needs to update for edge cases
 
 };
