@@ -44,49 +44,59 @@ let playerOneMoveThreeValue = 33;
 let playerTwoMoveThreeType = 'rock';
 let playerTwoMoveThreeValue = 33;
 
-
-
-console.log(playerOneMoveOneType);
-console.log(playerOneMoveOneValue);
 */
+
+
 
 const setPlayerMoves = (player, moveOneType, moveOneValue, moveTwoType, moveTwoValue, moveThreeType, moveThreeValue) => {
 
-  switch (moveOneType) {
-    case 'rock':
-    case 'paper':
-    case 'scissors':
-      switch (moveTwoType) {
-        case 'rock':
-        case 'paper':
-        case 'scissors':
-          switch (moveThreeType) {
-            case 'rock':
-            case 'paper':
-            case 'scissors':
-              if (player === 'Player One') {
-                playerOneMoveOneType = moveOneType;
-                playerOneMoveOneValue = moveOneValue;
-                playerOneMoveTwoType = moveTwoType;
-                playerOneMoveTwoValue = moveTwoValue
-                playerOneMoveThreeType = moveThreeType;
-                playerOneMoveThreeValue = moveThreeValue;
-              } else {
-                playerTwoMoveOneType = moveOneType;
-                playerTwoMoveOneValue = moveOneValue;
-                playerTwoMoveTwoType = moveTwoType;
-                playerTwoMoveTwoValue = moveTwoValue
-                playerTwoMoveThreeType = moveThreeType;
-                playerTwoMoveThreeValue = moveThreeValue;
-              }
-            break;
+if (moveOneValue + moveTwoValue + moveThreeValue <= 99) {
+  if (moveOneValue > 1 && moveOneValue < 98 ) {
+    if (moveTwoValue > 1 && moveTwoValue < 98 ) {
+      if (moveThreeValue > 1 && moveThreeValue < 98 ) {
+        switch (moveOneType) {
+          case 'rock':
+          case 'paper':
+          case 'scissors':
+            switch (moveTwoType) {
+              case 'rock':
+              case 'paper':
+              case 'scissors':
+                switch (moveThreeType) {
+                  case 'rock':
+                  case 'paper':
+                  case 'scissors':
+                    if (player === 'Player One') {
+                      playerOneMoveOneType = moveOneType;
+                      playerOneMoveOneValue = moveOneValue;
+                      playerOneMoveTwoType = moveTwoType;
+                      playerOneMoveTwoValue = moveTwoValue
+                      playerOneMoveThreeType = moveThreeType;
+                      playerOneMoveThreeValue = moveThreeValue;
+                    } else {
+                      playerTwoMoveOneType = moveOneType;
+                      playerTwoMoveOneValue = moveOneValue;
+                      playerTwoMoveTwoType = moveTwoType;
+                      playerTwoMoveTwoValue = moveTwoValue
+                      playerTwoMoveThreeType = moveThreeType;
+                      playerTwoMoveThreeValue = moveThreeValue;
+                    }
+                  break;
+          //default:
+            //break;
 
-    default:
-      break;
-
+        }
+      }
+      }
+      }
+    }
   }
 }
-}
+
+
+
+
+
 
 
 
@@ -254,8 +264,17 @@ const setComputerMoves = () => {}
 ;
 
 
+
 //test Runs
 /*
+setPlayerMoves();
+
+console.log(playerOneMoveOneType);
+console.log(playerOneMoveOneValue);
+console.log(playerTwoMoveOneType);
+console.log(playerTwoMoveOneValue);
+
+
 console.log(getGameWinner());
 console.log(getRoundWinner(1));
 console.log(getRoundWinner(2));
