@@ -1,6 +1,6 @@
 
 //initiliazing global variables for players
-
+/*
 let playerOneMoveOneType = undefined;
 let playerOneMoveOneValue = undefined;
 let playerTwoMoveOneType = undefined;
@@ -13,8 +13,38 @@ let playerOneMoveThreeType = undefined;
 let playerOneMoveThreeValue = undefined;
 let playerTwoMoveThreeType = undefined;
 let playerTwoMoveThreeValue = undefined;
+*/
+//test values
+playerOneMoveOneType = 'rock';
+playerOneMoveOneValue = 1;
+playerTwoMoveOneType = 'rock';
+playerTwoMoveOneValue = 48;
+playerOneMoveTwoType = 'scissors';
+playerOneMoveTwoValue = 48;
+playerTwoMoveTwoType = 'paper';
+playerTwoMoveTwoValue = 1;
+playerOneMoveThreeType = 'rock';
+playerOneMoveThreeValue = 50;
+playerTwoMoveThreeType = 'rock';
+playerTwoMoveThreeValue = 50;
 
 /*
+//Test values
+let playerOneMoveOneType = 'rock';
+let playerOneMoveOneValue = 33;
+let playerTwoMoveOneType = 'rock';
+let playerTwoMoveOneValue = 33;
+let playerOneMoveTwoType = 'rock';
+let playerOneMoveTwoValue = 33;
+let playerTwoMoveTwoType = 'rock';
+let playerTwoMoveTwoValue = 33;
+let playerOneMoveThreeType = 'rock';
+let playerOneMoveThreeValue = 33;
+let playerTwoMoveThreeType = 'rock';
+let playerTwoMoveThreeValue = 33;
+
+
+
 console.log(playerOneMoveOneType);
 console.log(playerOneMoveOneValue);
 */
@@ -115,31 +145,31 @@ const getRoundWinner = round => {
       }
       break;
     case 3:
-      if (playerOneMoveTwoType === playerTwoMoveTwoType) {
-        if (playerOneMoveTwoValue === playerTwoMoveTwoValue) {
+      if (playerOneMoveThreeType === playerTwoMoveThreeType) {
+        if (playerOneMoveThreeValue === playerTwoMoveThreeValue) {
           return 'Tie';
-        } else if (playerOneMoveTwoValue > playerTwoMoveTwoValue) {
+        } else if (playerOneMoveThreeValue > playerTwoMoveThreeValue) {
           return 'Player One';
         } else {
           return 'Player Two';
         }
       } // this part will test who won when it differs - starting with rock, scissors, paper.
-      if (playerOneMoveTwoType === 'rock') {
-        if (playerTwoMoveTwoType === 'scissors') {
+      if (playerOneMoveThreeType === 'rock') {
+        if (playerTwoMoveThreeType === 'scissors') {
           return 'Player One';
         } else {
           return 'Player Two';
         }
       }
-      if (playerOneMoveTwoType === 'scissors') {
-        if (playerTwoMoveTwoType === 'paper') {
+      if (playerOneMoveThreeType === 'scissors') {
+        if (playerTwoMoveThreeType === 'paper') {
           return 'Player One';
         } else {
           return 'Player Two';
         }
       }
-      if (playerOneMoveTwoType === 'paper') {
-        if (playerTwoMoveTwoType === 'rock') {
+      if (playerOneMoveThreeType === 'paper') {
+        if (playerTwoMoveThreeType === 'rock') {
           return 'Player One';
         } else {
           return 'Player Two';
@@ -147,7 +177,7 @@ const getRoundWinner = round => {
       }
       break;
     default:
-
+      return null;
       break;
 
   }
@@ -161,8 +191,46 @@ const getRoundWinner = round => {
 
 const getGameWinner = () => {
   //returns who won the game based on the stats and returns the winner or tie 'Player One', 'Player Two', or 'Tie'
+  let playerOneWins = 0;
+  let playerTwoWins = 0;
+  if (getRoundWinner(1) === 'Player One') {
+    playerOneWins++;
+  } else if (getRoundWinner(1) === 'Player Two') {
+    playerTwoWins++;
+}
+
+  if (getRoundWinner(2) === 'Player One') {
+    playerOneWins++;
+  } else if (getRoundWinner(2) === 'Player Two') {
+    playerTwoWins++;
+}
+
+  if (getRoundWinner(3) === 'Player One') {
+    playerOneWins++;
+  } else if (getRoundWinner(3) === 'Player Two') {
+    playerTwoWins++;
+  }
+
+  if (playerOneWins < playerTwoWins) {
+    return 'Player Two';
+  } else if (playerOneWins > playerTwoWins) {
+    return 'Player One';
+  } else {
+    return 'Tie';
+  }
+
 };
+
 
 const setComputerMoves = () => {}
 //chooses three random moves for player two. The move type for each move should be completely random, and the move values should be random but add up to 99
 ;
+
+
+//test Runs
+/*
+console.log(getGameWinner());
+console.log(getRoundWinner(1));
+console.log(getRoundWinner(2));
+console.log(getRoundWinner(3));
+*/
