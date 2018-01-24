@@ -237,21 +237,21 @@ const getGameWinner = () => {
   } else if (getRoundWinner(1) === 'Player Two') {
     playerTwoWins++;
 } else if (getRoundWinner(1) === null) {
-  return null
+  return null;
 }
   if (getRoundWinner(2) === 'Player One') {
     playerOneWins++;
   } else if (getRoundWinner(2) === 'Player Two') {
     playerTwoWins++;
 } else if (getRoundWinner(2) === null) {
-  return null
+  return null;
 }
   if (getRoundWinner(3) === 'Player One') {
     playerOneWins++;
   } else if (getRoundWinner(3) === 'Player Two') {
     playerTwoWins++;
   } else if (getRoundWinner(3) === null) {
-    return null
+    return null;
   }
   if (playerOneWins < playerTwoWins) {
     return 'Player Two';
@@ -263,16 +263,73 @@ const getGameWinner = () => {
 
 };
 
+const randomNumberOneToThree = () => Math.floor(Math.random() * 3);
 
-const setComputerMoves = () => {}
-//chooses three random moves for player two. The move type for each move should be completely random, and the move values should be random but add up to 99
-;
+
+const setComputerMoves = () => {
+  playerTwoMoveOneValue = Math.floor(Math.random() * 97) +1;
+  //console.log(playerTwoMoveOneValue);
+  playerTwoMoveTwoValue = Math.floor(Math.random() * (98 - playerTwoMoveOneValue)) +1;
+  //console.log(playerTwoMoveTwoValue);
+  playerTwoMoveThreeValue = 99 - playerTwoMoveOneValue - playerTwoMoveTwoValue;
+  //console.log(playerTwoMoveThreeValue);
+
+switch (randomNumberOneToThree()) {
+  case 0:
+    playerTwoMoveOneType = 'rock';
+    break;
+  case 1:
+    playerTwoMoveOneType = 'paper';
+    break;
+  case 2:
+    playerTwoMoveOneType = 'scissors';
+    break;
+  default:
+    break;
+}
+
+switch (randomNumberOneToThree()) {
+  case 0:
+    playerTwoMoveTwoType = 'rock';
+    break;
+  case 1:
+    playerTwoMoveTwoType = 'paper';
+    break;
+  case 2:
+    playerTwoMoveTwoType = 'scissors';
+    break;
+  default:
+    break;
+}
+
+switch (randomNumberOneToThree()) {
+  case 0:
+    playerTwoMoveThreeType = 'rock';
+    break;
+  case 1:
+    playerTwoMoveThreeType = 'paper';
+    break;
+  case 2:
+    playerTwoMoveThreeType = 'scissors';
+    break;
+  default:
+    break;
+}
+
+//console.log(playerTwoMoveOneType);
+//console.log(playerTwoMoveTwoType);
+//console.log(playerTwoMoveThreeType);
+
+};
+
 
 
 
 //test Runs
 /*
 setPlayerMoves();
+
+setComputerMoves();
 
 console.log(playerOneMoveOneType);
 console.log(playerOneMoveOneValue);
