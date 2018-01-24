@@ -16,7 +16,7 @@ let playerTwoMoveThreeValue = undefined;
 
 /*
 //test values
-playerOneMoveOneType = 'rock';
+playerOneMoveOneType = undefined;
 playerOneMoveOneValue = 1;
 playerTwoMoveOneType = 'rock';
 playerTwoMoveOneValue = 48;
@@ -236,20 +236,23 @@ const getGameWinner = () => {
     playerOneWins++;
   } else if (getRoundWinner(1) === 'Player Two') {
     playerTwoWins++;
+} else if (getRoundWinner(1) === null) {
+  return null
 }
-
   if (getRoundWinner(2) === 'Player One') {
     playerOneWins++;
   } else if (getRoundWinner(2) === 'Player Two') {
     playerTwoWins++;
+} else if (getRoundWinner(2) === null) {
+  return null
 }
-
   if (getRoundWinner(3) === 'Player One') {
     playerOneWins++;
   } else if (getRoundWinner(3) === 'Player Two') {
     playerTwoWins++;
+  } else if (getRoundWinner(3) === null) {
+    return null
   }
-
   if (playerOneWins < playerTwoWins) {
     return 'Player Two';
   } else if (playerOneWins > playerTwoWins) {
