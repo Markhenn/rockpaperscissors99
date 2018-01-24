@@ -93,17 +93,6 @@ if (moveOneValue + moveTwoValue + moveThreeValue <= 99) {
   }
 }
 
-
-
-
-
-
-
-
-
-
-//needs to update for edge cases
-
 };
 
 /*
@@ -118,6 +107,9 @@ const getRoundWinner = round => {
   switch (round) {
     //this is for round One
     case 1:
+    if (playerOneMoveOneType === undefined || playerOneMoveOneValue === undefined || playerTwoMoveOneType === undefined || playerTwoMoveOneValue === undefined) {
+      return null;
+    } else {
       if (playerOneMoveOneType === playerTwoMoveOneType) {
         if (playerOneMoveOneValue === playerTwoMoveOneValue) {
           return 'Tie';
@@ -148,8 +140,12 @@ const getRoundWinner = round => {
           return 'Player Two';
         }
       }
+    }
       break;
     case 2:
+    if (playerOneMoveTwoType === undefined || playerOneMoveTwoValue === undefined || playerTwoMoveTwoType === undefined || playerTwoMoveTwoValue === undefined) {
+      return null;
+    } else {
       if (playerOneMoveTwoType === playerTwoMoveTwoType) {
         if (playerOneMoveTwoValue === playerTwoMoveTwoValue) {
           return 'Tie';
@@ -180,36 +176,41 @@ const getRoundWinner = round => {
           return 'Player Two';
         }
       }
+    }
       break;
     case 3:
-      if (playerOneMoveThreeType === playerTwoMoveThreeType) {
-        if (playerOneMoveThreeValue === playerTwoMoveThreeValue) {
-          return 'Tie';
-        } else if (playerOneMoveThreeValue > playerTwoMoveThreeValue) {
-          return 'Player One';
-        } else {
-          return 'Player Two';
+      if (playerOneMoveThreeType  === undefined || playerOneMoveThreeValue === undefined || playerTwoMoveThreeType === undefined || playerTwoMoveThreeValue === undefined) {
+        return null;
+      } else {
+        if (playerOneMoveThreeType === playerTwoMoveThreeType) {
+          if (playerOneMoveThreeValue === playerTwoMoveThreeValue) {
+            return 'Tie';
+          } else if (playerOneMoveThreeValue > playerTwoMoveThreeValue) {
+            return 'Player One';
+          } else {
+            return 'Player Two';
+          }
+        } // this part will test who won when it differs - starting with rock, scissors, paper.
+        if (playerOneMoveThreeType === 'rock') {
+          if (playerTwoMoveThreeType === 'scissors') {
+            return 'Player One';
+          } else {
+            return 'Player Two';
+          }
         }
-      } // this part will test who won when it differs - starting with rock, scissors, paper.
-      if (playerOneMoveThreeType === 'rock') {
-        if (playerTwoMoveThreeType === 'scissors') {
-          return 'Player One';
-        } else {
-          return 'Player Two';
+        if (playerOneMoveThreeType === 'scissors') {
+          if (playerTwoMoveThreeType === 'paper') {
+            return 'Player One';
+          } else {
+            return 'Player Two';
+          }
         }
-      }
-      if (playerOneMoveThreeType === 'scissors') {
-        if (playerTwoMoveThreeType === 'paper') {
-          return 'Player One';
-        } else {
-          return 'Player Two';
-        }
-      }
-      if (playerOneMoveThreeType === 'paper') {
-        if (playerTwoMoveThreeType === 'rock') {
-          return 'Player One';
-        } else {
-          return 'Player Two';
+        if (playerOneMoveThreeType === 'paper') {
+          if (playerTwoMoveThreeType === 'rock') {
+            return 'Player One';
+          } else {
+            return 'Player Two';
+          }
         }
       }
       break;
@@ -217,7 +218,8 @@ const getRoundWinner = round => {
       return null;
       break;
 
-  }
+}
+
 
   //return who won the round ('Player One', 'Player Two', or 'Tie'
 };
